@@ -4,16 +4,16 @@ import rospy
 
 import actionlib
 
-import actionlib_tutorials.msg
+import my_actions.msg
 
 class FibonacciAction(object):
     # create messages that are used to publish feedback/result
-    _feedback = actionlib_tutorials.msg.FibonacciFeedback()
-    _result = actionlib_tutorials.msg.FibonacciResult()
+    _feedback = my_actions.msg.FibonacciFeedback()
+    _result = my_actions.msg.FibonacciResult()
 
     def __init__(self, name):
         self._action_name = name
-        self._as = actionlib.SimpleActionServer(self._action_name, actionlib_tutorials.msg.FibonacciAction, execute_cb=self.execute_cb, auto_start = False)
+        self._as = actionlib.SimpleActionServer(self._action_name, my_actions.msg.FibonacciAction, execute_cb=self.execute_cb, auto_start = False)
         self._as.start()
       
     def execute_cb(self, goal):
